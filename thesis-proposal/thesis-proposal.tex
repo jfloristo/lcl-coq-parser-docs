@@ -25,9 +25,10 @@
 
 \begin{document}
 
-\title{CS198/199 Research Project Proposal \fillme{Your Project}}
-\author{\fillme{Your Name (Your UP ID Number)}}
-\maketitle
+\title{CS198/199 Research Project Proposal: Writing a Python-to-Coq Translator with Automated Theorem Generation}
+\author{Loristo, John Ivan\\Martin, Brandon}
+
+\maketitle 
 
 
 
@@ -45,8 +46,34 @@ lines in the preamble (just above  {\tt $\backslash$begin\{document\}} of this .
 recompile (run \LaTeX again) and submit the PDF on Compass.}\\
 
 \section*{Task description}
-\instructions{Describe the task you want to tackle in your project.}
 
+In recent years, formal verification has become increasingly crucial for ensuring software reliability, particularly in fields that require high assurance, such as finance, healthcare, and security. Coq, a powerful formal proof management system, enables the construction and verification of proofs for software correctness. However, translating complex algorithms from widely-used programming languages, such as Python, into Coq for formal verification presents significant challenges, especially when attempting to automate both the translation and proof generation processes.\par
+
+This thesis seeks to address the challenge of developing a parser capable of translating basic Python functions into Coq functions, thus bridging the gap between Python and Coq's formal, functional style. \par
+
+The project will have two main objectives:
+\begin{enumerate}
+    \item \textbf{Translation Module}: To create a translator that can convert a limited subset of Python functions into Coq functions. \par
+    The proposed parser are expected to cover the following:
+    \begin{enumerate}
+        \item basic arithmetic functions on floats and integers
+        \begin{enumerate}
+            \item addition 
+            \item subtraction
+            \item multiplication
+            \item division
+        \end{enumerate}
+        \item basic flow control and conditionals
+        \begin{enumerate}
+            \item if
+            \item else
+            \item elif
+            \item loops
+        \end{enumerate}
+    \end{enumerate}
+    \item \textbf{Automated Theorem Generation}: To develop an automated Coq theorem generator targeting common Python function patterns. 
+\end{enumerate}
+By developing the capability to automatically translate Python code into Coq, the research will contribute to make formal verification more accessible and lay foundation to more extensive tools for translation and cross-language verification. 
 \section*{Background}
 \instructions{What prior work has there been on or related to your task? Please
   provide bibliographic references where available}
@@ -57,21 +84,48 @@ recompile (run \LaTeX again) and submit the PDF on Compass.}\\
 
 \section*{Your approach} 
 \instructions{Describe how you want to tackle this task}
+The first step in this project is the translation of Python functions into Coq. This will require parsing Python code, going through its syntax, before ultimately generating the Coq code. The following will go through the steps required to achieve this.
+\begin{enumerate}
+    \item Parsing Python code:\par
+    First, we need to choose a library that can help us parse Python code. The following are our top choices:
+    \begin{enumerate}
+        \item \href{https://lark-parser.readthedocs.io/en/stable/index.html#}{Lark}
+        \item \href{https://www.dabeaz.com/ply/ply.html}{PLY (Python Lex-Yacc)}
+        \item \href{https://docs.python.org/3/library/ast.html}{Python native ast module}
+    \end{enumerate}
+    These libraries will be used to parse Pyhon code into abstract syntax trees that we can traverse and manipulate to generate the Coq code.
+    \item Coq code generation:
+    After parsing the code, we can then move to the actual generation of the Coq code. To do these, we can employ the use of templating libraries that are made for Python.
+    \begin{enumerate}
+        \item \href{https://www.makotemplates.org/}{Mako}
+        \item \href{https://jinja.palletsprojects.com/en/stable/}{Jinja2}
+        \item \href{https://cheetahtemplate.org/}{Cheetah}
+    \end{enumerate}
+\end{enumerate}
 
 \section*{Your to-do list}
 \instructions{Get started by making a to-do list. Set yourself deadlines. Here are a few
   items that might appear on your to-do list}
 \begin{enumerate}
-\item \fillme{...do you have data?}
-\item \fillme{...do you know related work? (have you got the
-    references  for your .bib file?)}
-\item \fillme{...what algorithm will you use? do you need to implement
-    this yourself, or will you use an off-the-shelf package?} 
-\item \fillme{...what experiments do you plan to run?}
-  \item \fillme{...how will you evaluate your experiments? Do you have
-    to implement your own evaluation script, or can you use somebody
-    else's? }
-\item \fillme{...and don't forget to allocate time for the writeup!} 
+    \item Compile resources and related literature
+    \item Finalize scope and limitations
+    \item Finalize architecture, solution, and tools to be used
+    \item Gather needed test data to prove that the translator and theorem generator works 
+    \item Finalize acceptance criteria
+    \item Finalize timeline of implementation and manuscript writing\par
+        Semester 1: 
+        \begin{enumerate}
+            \item November 29: Literature review and preparation for thesis proposal presentation
+            \item December 13: Written thesis proposal
+        \end{enumerate}
+        Semester 2:
+        \begin{enumerate}
+            \item Week 1 to 3: Design and solutioning (Jan 6 to 24)
+            \item Week 4 to 11: Implementation, testing, and documentation (Jan 27 to March 21)
+            \item Week 12 onwards: Writing the manuscript (March 24 onwards)
+        \end{enumerate}
+    \item Implementation
+    \item Write manuscript 
 \end{enumerate}
 
 \section*{Bibliography}
